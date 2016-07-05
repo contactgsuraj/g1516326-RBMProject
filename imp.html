@@ -1,0 +1,353 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RBM | Topics</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css">
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+  <!-- font-family: 'PlayFair', serif !important; -->
+  <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
+  <!-- font-family: 'Cinzel', serif !important; -->
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display+SC' rel='stylesheet' type='text/css'>
+  <!-- font-family: 'Playfair Display SC', serif; -->
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/imp.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+  <script type="text/javascript" src="js/smoothscroll.js"></script>
+</head>
+
+<body style="height: 100%;">
+
+
+  <style>
+    .background {margin:0;padding:0;}
+    .bg-color1 {background: #FFCD99;}
+    .bg-color2 {background: #FFA56A;}
+    .bg-color3 {background: #E89D83;}
+    .bg-color4 {background: #E87E59;}
+    .bg-color5 {background: #FF7346;}
+    .bg-color6 {background: #E8720C;}
+    .bg-color7 {background: #FF2F2F;}
+
+
+    .content {width:80%;margin:0 auto; background:white;}
+    .footer {width:80%;margin:0 auto; background:white;}
+
+  </style>
+
+
+  <div class="bodyWrapper">
+    <div class="Navbar">
+
+      <nav class="top-bar" data-topbar>
+        <ul class="title-area row center-buttons">
+          <li class="name">
+            <h1><a href="#" class="titleBar">Neural Networks and Artifical Intelligence</a></h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+
+        <section class="top-bar-section row">
+          <ul class="small-12">
+
+            <li><a href="index.html"><i class="fi-home"></i>Home</a></li>
+            <li><a href="WhatIsIt.html"><i class="fi-magnifying-glass"></i>What is it?</a></li>
+            <li><a href="how.html"><i class="fi-widget"></i>How Does it Work?</a></li>
+            <li><a href="dbn.html"><i class="fi-rss"></i>Deep Belief Nets</a></li>
+            <li class="active"><a href="imp.html"><i class="fi-wrench"></i>What We Did</a></li>
+            <li><a href="app.html"><i class="fi-play"></i>Try it out!</a></li>
+            <li><a href="Biblio.html"><i class="fi-page"></i>Bibliography</a></li>
+            <li><a href="AboutUs.html"><i class="fi-torsos-all"></i>About Us</a></li>
+          </ul>
+
+
+        </section>
+      </nav>
+    </div>
+
+    <div class="bodyOfPage">
+      <div class="row ">
+        <div class="first row background bg-color1" style="margin-left: -50%; margin-right: -50%;">
+          <div class="animated fadeIn">
+            <h2 >Our Implementation</h2>
+            <div style="max-width: 50%; margin-right: auto; margin-left: auto;">
+              <div class="subtext row">
+                <p>
+                  To facilitate our reasearch, we decided to implement our very own RBM. Here, we will discuss the process behind the implementation and the technical details behind it.
+                </p>
+              </div>
+              <div class="button1">
+                <a href='app.html 'class="small-12 columns">
+                  <button >Try it out!</button>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="ToC row background bg-color2" style="margin-left: -50%; margin-right: -50%;">
+        <div class="animated fadeIn">
+          <h2 >Table of Contents</h2>
+          <div style="max-width: 50%; margin-right: auto; margin-left: auto;">
+            <div class="subtext row">
+              <nav class="toc" role = "navigation" class="table-of-contents">
+                <ol>
+                  <li><a class="smoothScroll" href="#i">Introduction</a></li>
+                  <li><a class="smoothScroll" href="#p">Setting Up</a></li>
+                  <li><a class="smoothScroll" href="#b">Beginning the Training</a></li>
+                  <li><a class="smoothScroll" href="#c">Contrastive Divergence</a></li>
+                  <li><a class="smoothScroll" href="#r">Reconstructing and Classifying </a></li>
+
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="i">
+      <div class="second row background bg-color3" style="margin-left: -50%; margin-right: -50%;">
+        <div class="animated fadeIn">
+          <h2 >Introduction</h2>
+          <div style="max-width: 50%; margin-right: auto; margin-left: auto;">
+            <div class="subtext row">
+              <p>
+
+                There are many uses of RBMs, one of which is to recognise handwritten digits. Our implementation of Handwritten Digit Recognition will be a “generative model”<sup> (12)</sup> which means that “after learning, the trained RBM can be used to generate sample from the learned distribution<sup> (12)</sup>”. This has been implemented using Java.
+                Our RBM was trained with the MNIST database of handwritten digits <sup> (31)</sup> and using the 28x28 image and its label data, we trained it to regenerate as well as classify the given image.
+
+
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="p">
+      <div class="third row background bg-color4" style="margin-left: -50%; margin-right: -50%;">
+        <div class="animated fadeIn">
+          <h2 >Setting Up</h2>
+          <div style="max-width: 50%; margin-right: auto; margin-left: auto;">
+            <div class="subtext row">
+              <h3>Preparing dataset</h3>
+              <p>
+                In order to load the MNIST dataset, we used the methods DigitImageLoadingService and DigitImage as implemented by <a href=’https://github.com/vivin’>Vivin</a> on Github <sup> (32)</sup>.
+              </p>
+
+              <h3>RBM</h3>
+              <p>
+                Our RBM consists of 794 visible and 500 hidden units. Visible layer uses 784 units for data input from the MNIST training image and 10 units for the “ten binary indicator variable, one of which is set to 1 indicating that the image shows a particular digit while others are set to 0<sup> (9)</sup>”. This allows RBM to “be used as classifiers<sup> (9)</sup>”.
+              </p>
+
+              <h3>Initialising</h3>
+              <p>
+                Firstly, the RBM’s weights and biases are initialised. Each weight is randomly given a number which is uniformly distributed between -1/794 to 1/794. Both visible and hidden biases are initialised to be 0.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="b">
+      <div class="fourth row background bg-color5" style="margin-left: -50%; margin-right: -50%;">
+        <div class="animated fadeIn">
+          <h2 >Beginning the Training</h2>
+          <div style="max-width: 50%; margin-right: auto; margin-left: auto;">
+            <div class="subtext row">
+              <h3>Training</h3>
+              <p>
+                The RBM is then trained with “images of handwritten digits combined with ten binary indicator variables<sup> (9)</sup>” to learn the features of the MNIST training image and its labels. The learning method used is known as “Contrastive Divergence”<sup> (8)</sup>  with k = 1, as discussed in the <a href=’how.html’>“How does it work?”</a> section. Contrastive Divergence also “assumes that all of the visible and hidden units are binary.”<sup> (10)</sup> 
+              </p>
+
+              <h3>Updating the hidden states and visible states</h3>
+              <p>
+               The probability of “turning on a hidden unit”<sup> (10)</sup> is computed using the sigmoid function which is an energy function used in many RBMs. If the hidden units “probability is greater than a random number uniformly distributed between 0 and 1”<sup> (10)</sup>, it is activated. 
+               Visible states have their units updated in a similar fashion. They use the hidden units as the input instead. A code snippet of how this works can be seen below.
+             </p>
+             <div>
+             
+              <pre class="prettyprint" style="text-align: left;font-size: 18px; word-wrap: break-word;">
+
+    // Updating the visible states
+    public void sampleVisible(double[] hiddenSample, double[] mean, double[] sample) {
+        for (int i = 0; i < numVisible; i++) {
+        mean[i] = propagateDown(hiddenSample, i, visibleBias[i]);
+        sample[i] = getBinomial(random, 1, mean[i]);
+      }
+    }
+
+    // Updating the hidden states
+    public void sampleHidden(double[] visibleSample, double[] mean, double[] sample) {
+        for (int i = 0; i < numHidden; i++) {
+          mean[i] = propagateUp(visibleSample, weight[i], hiddenBias[i]);
+          sample[i] = getBinomial(random, 1, mean[i]);
+        }
+    }
+
+    public double propagateUp(double[] visibleSample, double[] weight, double bias) {
+      double preSigmoidActivation = 0.0;
+      for (int i = 0; i < numVisible; i++) {
+        preSigmoidActivation += weight[i] * visibleSample[i];
+      }
+      preSigmoidActivation += bias;
+      return sigmoid(preSigmoidActivation);
+    }
+
+    public double propagateDown(double[] hiddenSample, int j, double bias) {
+      double preSigmoidActivation = 0.0;
+      for (int i = 0; i < numHidden; i++) {
+        preSigmoidActivation += weight[i][j] * hiddenSample[i];
+      }
+      preSigmoidActivation += bias;
+      return sigmoid(preSigmoidActivation);
+    }
+
+
+</pre>
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row" id="c">
+  <div class="fifth row background bg-color4" style="margin-left: -50%; margin-right: -50%;">
+    <div class="animated fadeIn">
+      <h2 >Contrastive Divergence</h2>
+      <div style="max-width: 50%; margin-right: auto; margin-left: auto;">
+        <div class="subtext row">
+          <p>
+            Our implementation of RBM uses the single-step contrastive divergence algorithm as discussed, which we will call CD-1, in the <a href=’how.html’> “How does it work?”</a> section. There are two phases in CD-1 which we will call the positive and negative phase. This is logically similar to equations (18) and (19) in the <a href=’how.html’> “How does it work?”</a> section.
+            <br><br>
+            In the positive phase, the input sample “v” from the visible layer is “clamped” to the input layer, and then is propagated to the hidden layer. The result of the hidden layer activation is h. 
+            <br><br>
+            In the negative phase, “h” from the hidden layer is propagated back to the visible layer with the new v, say v’. This is then propagated back to the hidden layer with activation result “h”.
+            <br><br>
+            Using the sampled data, the weights and biases are updated depending on the learning rate which is initialised to 0.5. The learning rate determines, as its name suggests, the rate at which the RBM learns. Increasing the learning rate would mean that the time taken to learn would be much shorted but the data is less accurate. The opposite is the case when the learning rate is low<sup> (34)</sup>. The code for CD-1 can be seen below.
+            <br><br>
+          </p>
+
+        <pre class="prettyprint" style="text-align: left;font-size: 18px; word-wrap: break-word;">
+
+    public void cd_1(double[] input, double learningRate) {
+      sampleHidden(input, positiveHMean, positiveHSample);    //positive phase
+      gibbsHVH(positiveHMean, negativeVMean, negativeVSample, 
+          negativeHMean, negativeHSample); // negative phase
+      
+      for (int i = 0; i < numHidden; i++) {
+        for (int j = 0; j < numVisible; j++) {
+                weight[i][j] += learningRate * (positiveHMean[i] * input[j] - negativeHMean[i]
+                 * negativeVSample[j]) / numTraining;
+        }
+      hiddenBias[i] += learningRate * (positiveHSample[i] - negativeHMean[i]) / numTraining;
+      }
+      for (int i = 0; i < numVisible; i++) {
+        visibleBias[i] += learningRate * (input[i] - negativeVSample[i]) / numTraining;
+      }
+    }
+    public void gibbsHVH(double[] hiddenSample, double[] negativeVMean, 
+    double[] negativeVSample, double[] negativeHMean, double[] negativeHSample) {
+      sampleVisible(hiddenSample, negativeVMean, negativeVSample);
+      sampleHidden(negativeVSample, negativeHMean, negativeHSample);
+    }
+            </pre>
+            <br><br>
+
+            <p>
+            In our implementation of the RBM, we perform CD-1 150 times. This is what we will call the “epoch(s)”. It does not refer to the number of Gibbs sampling, which is 1 since it is CD-1, but the number of times the RBM trains over the data. We are utilizing the MNIST data set and that contains 60,000 inputs. The training function with the epoch can be seen below.
+         </p>
+            <pre class="prettyprint" style="text-align: left;font-size: 18px; word-wrap: break-word;">
+
+    public void train(int trainN) {
+      for (int epoch = 0; epoch < trainEpochs; epoch++) {
+        for (int i = 0; i < trainN; i++) {
+          rbm.cd_1(trainingData[i], learningRate);
+        }
+      }
+    }
+    </pre>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" id="r">
+  <div class="fifth row background bg-color3" style="margin-left: -50%; margin-right: -50%;">
+    <div class="animated fadeIn">
+      <h2>Reconstructing and Classifying</h2>
+      <div style="max-width: 50%; margin-right: auto; margin-left: auto;">
+        <div class="subtext row">
+        <p>
+          Once the RBM has been through the training phase, it will then be able to reconstruction from valid input data. For example, if a valid image of 1 is given, the RBM will attempt to replicate it. When reconstructing, the RBM uses its trained weights, biases and the input data to propagate up to create the hidden layer output. Then for each visible layer, RBM propagates down to create the reconstructed image.
+          <br></p>
+          <pre class="prettyprint" style="text-align: left;font-size: 18px; word-wrap: break-word;">
+
+    public void reconstruct(double[] visible, double[] reconstructedVisible) {
+      for (int i = 0; i < numHidden; i++) {
+        hidden[i] = propagateUp(visible, weight[i], hiddenBias[i]);
+      }
+      for (int i = 0; i < numVisible; i++) {
+        double preSigmoidActivation = 0.0;
+        for (int j = 0; j < numHidden; j++) {
+            preSigmoidActivation += weight[j][i] * hidden[j];
+        }
+        preSigmoidActivation += visibleBias[i];
+        reconstructedVisible[i] = sigmoid(preSigmoidActivation);
+      }
+    }
+       </pre>
+          <br>
+          <p>Classification depends on reconstruction. We can feed the RBM the images without labels and when the given input is reconstructed, there will be values generated at the label<sup> (9)</sup>. The largest unit in the label is the value RBM classifies the <b>given image</b> as. The image below describes this process:
+        </p>
+        <img src="img/classification.png">
+        <br><br>
+        <p>
+          As the RBM is a generative model, it should be, in theory, possible to look “into the mind of a neural network”<sup>(8)</sup>. We decided to implement a somewhat simpler version to generate from our RBM the digits.
+          <br><br>
+          First we tried “clamping” <sup>(8)</sup> the corresponding label unit to 1.0 and all of the other visible units to 0.0. Using the reconstruction as explained above, we generated the image. However, there was an issue with the reconstructed image being unclear, as the RBM was only turning on 1 / 794 of the visible nodes. This meant that the hidden units struggled to activate and thus reconstructed a poor image.<br><br>  
+          In order to overcome this issue, we amplified the input data to 794.0, to compensate for the lack of visible nodes turned on.  We then “clamped” the corresponding label unit again in the reconstructed data by setting the corresponding label to 1.0 and the other label units to 0.0. We reconstruct this again and again until the image is clear (In this case, it was regenerated 5 times). <br><br>
+
+          This is the result of the regeneration from the label data.
+        </p>
+
+        <img src="img/rec.jpg">
+      </div>
+    </div>
+
+    <div class="citation">
+      Image taken from <a href="http://image.diku.dk/igel/paper/TRBMAI.pdf">http://image.diku.dk/igel/paper/TRBMAI.pdf</a>, Accessed on 27th February 2016
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+  $(document).ready(function() {
+    $(document).foundation();
+  })
+</script>
+
+</body>
+</html>

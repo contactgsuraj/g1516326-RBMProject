@@ -1,0 +1,619 @@
+<!doctype html>
+
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RBM | Topics</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css">
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+  <!-- font-family: 'PlayFair', serif !important; -->
+  <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
+  <!-- font-family: 'Cinzel', serif !important; -->
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display+SC' rel='stylesheet' type='text/css'>
+  <!-- font-family: 'Playfair Display SC', serif; -->
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/how.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+  <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/smoothscroll.js"></script>
+  <script src="dist/js/smooth-scroll.js"></script>
+
+</head>
+
+<body style="height: 100%;">
+
+
+  <style>
+    .background {margin:0;padding:0;}
+    .bg-color1 {background: #FFCD99;}
+    .bg-color2 {background: #FFA56A;}
+    .bg-color3 {background: #E89D83;}
+    .bg-color4 {background: #E87E59;}
+    .bg-color5 {background: #FF7346;}
+    .bg-color6 {background: #E8720C;}
+    .bg-color7 {background: #FF2F2F;}
+
+
+    .content {width:80%;margin:0 auto; background:white;}
+    .footer {width:80%;margin:0 auto; background:white;}
+
+  </style>
+
+  <article>
+    <div class="bodyWrapper smooth">
+
+
+
+      <div class="Navbar">
+
+        <nav class="top-bar" data-topbar>
+          <ul class="title-area row center-buttons">
+            <li class="name">
+              <h1><a href="#" class="titleBar">Neural Networks and Artifical Intelligence</a></h1>
+            </li>
+            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+          </ul>
+
+          <section class="top-bar-section row">
+            <ul class="small-12">
+
+              <li><a href="index.html"><i class="fi-home"></i>Home</a></li>
+              <li><a href="WhatIsIt.html"><i class="fi-magnifying-glass"></i>What is it?</a></li>
+              <li  class="active"><a href="#"><i class="fi-widget"></i>How Does it Work?</a></li>
+              <li><a href="dbn.html"><i class="fi-rss"></i>Deep Belief Nets</a></li>
+              <li><a href="imp.html"><i class="fi-wrench"></i>What We Did</a></li>
+              <li><a href="app.html"><i class="fi-play"></i>Try it out!</a></li>
+              <li><a href="Biblio.html"><i class="fi-page"></i>Bibliography</a></li>
+              <li><a href="AboutUs.html"><i class="fi-torsos-all"></i>About Us</a></li>
+            </ul>
+
+
+          </section>
+        </nav>
+      </div>
+
+      <div class="bodyOfPage">
+
+        <div class="row">
+          <div class="ToC row background bg-color1" style="margin-left: -50%; margin-right: -50%;">
+            <div class="animated fadeIn">
+              <h2 >Table of Contents</h2>
+              <div style="max-width: 50%; margin-right: auto; margin-left: auto;">
+                <div class="subtext row">
+                  <nav class="toc" role = "navigation" class="table-of-contents">
+                    <ol>
+                      <li><a class="smoothScroll" href="#vh">Visible and Hidden Nodes</a></li>
+                      <li><a class="smoothScroll" href="#wb">Weight and Bias</a></li>
+                      <li><a class="smoothScroll" href="#cd">What's Contrastive divergence?</a></li>
+                      <li><a class="smoothScroll" href="#wcd">Why Contrastive Divergence?</a></li>
+                      <li><a class="smoothScroll" href="#g">Gibbs Sampling</a></li>
+                      <li><a class="smoothScroll" href="#s">Sigmoid Function</a></li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row " id="vh">
+          <div class="first row background bg-color2" style="margin-left: -50%; margin-right: -50%;">
+            <div class="animated fadeIn">
+              <h2 >Visible and Hidden nodes</h2>
+              <div class=""style="max-width: 50%; margin-right: auto; margin-left: auto;">
+                <div class="subText row">
+                  <p>
+                    Restricted Boltzmann machines are a “shallow, two-layer neural network”. They are composed of two layers, the first being the visible layer and the second, the hidden layer<sup> (8)</sup>. The “restricted” in the “Restricted Boltzmann Machine” restricts any intra-layer communication. This means that there doesn’t exist any visible-visible or hidden-hidden communication<sup> (3)</sup>. This forms a complete bi-partite graph.
+                    <br><br>
+
+                    Each visible unit of the first layer, i.e. the visible layer, corresponds to a single component of an observation<sup>(9)</sup>. For example “from a dataset of grayscale images, each visible node would receive one pixel-value for each pixel in one image<sup> (3)</sup>”. 
+                    <br><br>
+
+                    “The hidden units model dependencies between the components of observations<sup> (9)</sup>”. The hidden units depend on the input into the visible layer and for each node in the hidden layer, each input is multiplied by its respective weight. The sum of the products is then added to a bias <sup> (3)</sup>. This is then “fed into an activation function<sup> (3)</sup>”. For example, one of the more common activation functions is the sigmoid function which our RBM uses and is discussed in the section on the <a class="smoothScroll" href='how.html#s'>Sigmoid Function</a> section on this page.
+                    This diagram effective shows the formula for calculating the value of a hidden unit:
+                    <br>
+                    <img src="img/weight.png">
+                    <br>
+
+
+                    The hidden units are activated when the “output”<sup> (3)</sup> is “greater than a random number uniformly distributed between 0 and 1<sup> (10)</sup>”.
+                  </p>
+
+                </div>
+              </div>
+              <div class="citation">
+                Image adapted from <a href="http://deeplearning4j.org/restrictedboltzmannmachine.html#define">http://deeplearning4j.org/restrictedboltzmannmachine.html#define</a>, Accessed on 20th Feb 2016.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row " id="wb">
+          <div class="second row background bg-color3" style="margin-left: -50%; margin-right: -50%;">
+            <div class="animated fadeIn">
+              <h2>Bias and Weights</h2>
+              <div class=""style="max-width: 50%; margin-right: auto; margin-left: auto;">
+                <div class="subText row">
+                  <h3>Bias</h3>
+                  <p>
+                    RBMs have two biases and this is one of the key features which distinguishes it from other auto-encoders<sup> (3)</sup>. The two types of biases are “visible biases” and “hidden biases”<sup>(10)</sup>.
+                    <br><br>
+                    The biases are important as “hidden bias helps the RBM produce the activation on the forward pass” and the “visible biases help the RBM learn the reconstruction on the backward pass<sup>(3)</sup>”.
+
+                  </p>
+                  <h3>Weights</h3>
+                  <p>
+
+                    Weights are the “connection<sup>(10)</sup>” between the visible and the hidden units. It forms a “bidirectional and symmetric<sup>(11)</sup>” graph. The usage of the weights works the “same in both directions”.                 Weights are initialised “to some small random value” and then are updated as the RBM is trained in following way<sup>(10)</sup>:
+                  </p>
+                  <br><br>
+                  <div class="row eqn ">
+                    \begin{equation}
+                    \Delta \omega_{ij} = \epsilon(\langle v_ih_j\rangle_{data} - \langle v_ih_j\rangle_{reconstructed})
+                    \end{equation}
+                  </div>
+                  <br><br>
+
+                  <p>
+                    “where \(v_{i}\), \(h_{j}\) are the binary state of visible unit i and hidden unit \(j\), \(a_{j}\), \(b_{j}\) are their biases and \(w_{ij}\) is the weight between them”<sup>(10)</sup> and “epsilon is a learning rate<sup>(10)</sup>”. “The update rule for the biases \(a_{j}\) and \(b_{j}\) can be defined analogously<sup>(12)</sup>”.
+                  </p>
+
+                </p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="third row background bg-color4" id="cd" style="margin-left: -50%; margin-right: -50%;">
+        <div class="animated fadeIn">
+          <h2>Contrastive Divergence</h2>
+          <h3>What is it?</h3>
+          <div class="thirdBody" style="max-width: 50%; margin-left: auto; margin-right: auto;">
+            <img src="img/gradient.png" style="border: 5px solid black">
+            <p>
+              <div class="cdIntro small-6 columns">
+                “Contrastive divergence is a recipe for training undirected graphical models<sup>(13)</sup>". 
+              </div> 
+              <div class="sideIntro"> 
+                Simply put, it is a maximum-likelihood (ML)<sup>(14)</sup> learning algorithm that is used to calculate the gradient, a “slope representing the relationship between a network’s weights and its error”<sup>(7)</sup>. This algorithm is essential to a RBM as without it, the RBM would be unable to carry out unsupervised learning.
+              </div>
+              <p>
+                The mathematics and nitty-gritty behind this is as follows. This has been largely taken and modified from Oliver Woodford’s “Notes on contrastive divergence”<sup>(15)</sup>, Miguel A. and Geoffrey Hinton’s “On Contrastive Divergence Learning”<sup>(16)</sup> and Deep Learning’s notes on RBMs<sup>(8)</sup>.
+              </p>
+            </div>
+
+
+            <div class="citation">
+              Image adapted from <a style="color: #c93042;" href="http://sebastianruder.com/optimizing-gradient-descent/">http://sebastianruder.com/optimizing-gradient-descent/</a>, Accessed on 28th Feb 2016.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row ">
+      <div class="fourth row background bg-color5" id="wcd" style="margin-left: -50%; margin-right: -50%;">
+        <div class="animated fadeIn">
+          <h2>Why Contrastive Divergence?</h2>
+          <h3>Now that we understand what it is, let us understand why we need it</h3>
+          <div class="fourthBody bg-color5" style="max-width: 50%; margin-left: auto; margin-right: auto;">
+
+            <p>
+
+              The RBM is fed with training data which we call \(\ \textbf X = (x_{1},..,k) \). \( \Theta\) is a vector of the model parameters. If we model the probability of a data point, \(\ x \), we use a function \(f\left(x; \Theta\right)\). If \(p\left(x; \Theta\right)\) is the probability of \(\ x \) occurring, integrating this over every single data point, i.e. over all possible \(\ x \)’s, would give you the value \(1\). Let us define a partition function \(Z\) as well. The probability of \(\ x \), \(p\left(x; \Theta\right)\) must therefore be 
+
+            </p>
+
+            <br>
+            <div class="row eqn ">
+              <div class="small-11 columns">
+                \begin{equation} p\left(x; \Theta\right) = \frac{1}{Z\left(\Theta \right)} f\left(x; \Theta\right)\end{equation} 
+              </div>
+              <div class="num small-1 columns">
+                (1)
+              </div>
+            </div>
+            <br>
+
+            <p>
+
+              Where
+
+            </p>
+
+            <br>
+            <div class="row eqn ">
+              <div class="small-11 columns">
+                \begin{equation} 
+                Z\left(\Theta \right) = \int f\left(x; \Theta\right)
+                \end{equation} 
+              </div>
+              <div class="num small-1 columns">
+                (2)
+              </div>
+            </div>
+            <br>
+
+            <p>
+
+              To learn \(\Theta\) most effectively, we maximize the probability of the training set of data \(X\) like so: 
+
+            </p>
+
+            <br>
+            <div class="row eqn ">
+              <div class="small-11 columns">
+                \begin{equation}
+                p\left(\textbf X; \Theta\right) = \prod _{k=1}^{K}\frac{1}{Z\left(\Theta \right)} f\left(x_{k}; \Theta\right)
+                \end{equation}
+              </div>
+              <div class="num small-1 columns">
+                (3)
+              </div>
+            </div>
+            <br>
+
+            <p>
+
+              This is equivalent to minimizing the negative log of \(p\left(x; \Theta\right)\), which we will denote as \(E( \textbf X; \Theta)\). This is known as the energy function:
+
+            </p>
+
+            <br>
+            <div class="row eqn ">
+              <div class="small-11 columns">
+                \begin{equation} E\left(\textbf X; \Theta\right) = \log Z(\Theta)-\frac{1}{K}\sum _{k=1}^{K}\log f\left(x_{k}; \Theta\right) \end{equation}
+              </div>
+              <div class="num small-1 columns">
+                (4)
+              </div>
+            </div>
+            <br>
+
+            <p>
+
+              Now if we choose \(f\left(x; \Theta\right)\) to be the pdf of a normal distribution \(\aleph (x ; \mu, \sigma)\) so that \(\Theta = \{\mu , \sigma \} \) . The integral of the pdf would be 1 and thus \(\log Z(\Theta) = 1 \). By differentiating our energy function with respect to \( \mu \), it shows the ideal \( \mu \) is the average of \( \textbf X \), our training data. The optimal \(\sigma\), can be found by differentiating (4) with respect to \(\sigma\), is the square root of the variance of the data, i.e., the standard deviation. We can see that, in this specific case, a method to minimise our energy function exists. However, let as look at the case where our probability model function, \(f\left(x; \Theta\right)\), is the sum of N normal distributions such that \(\Theta = \{\mu_{1,..,N}, \sigma _{1,..,N}\}\):
+
+            </p>
+
+            <br>
+            <div class="row eqn ">
+              <div class="small-11 columns">
+                \begin{equation}f\left(x; \Theta\right) = \sum_{i=1}^{N} \aleph(x;\mu_{i},\sigma_{i})\end{equation}
+              </div>
+              <div class="num small-1 columns">
+                (5)
+              </div>
+            </div>
+            <br>
+
+            <p>
+
+              Again, with the integral of the normal distribution function equating to one, using equation (2), we show that \(Z = N\) and therefor, \(\log Z(\Theta) = \log N\). However, when we differentiate (4) this time round, we see that the optimal values for \(\mu_{i}\) and \(\sigma{i}\), where i is some value between 1 and N, are dependent on other model parameters. Thus we are unable to calculate the optimal model parameters directly and are required to use partial differential equations and a method known as gradient descent to find the local minima, i.e. that of the energy.
+
+              <br><br>
+
+
+              Oliver Woodford explains with a great analogy what gradient descent (with line search) is. He describes it as “being in a field at night with a torch”. He then goes on to say that “we can either feel the gradient of the field at the point we’re standing, or else estimate it by using the torch to see the relative height of the field a short distance in each direction from us (numerical differentiation using finite differences). Then, by shining the torch beam in our chosen direction of travel, it also allows us to see the lowest point in the field in that direction. We can then walk to that point, and iteratively choose a new direction and distance to walk”.
+
+              <br><br>
+              Lastly, if we choose \(f\left(x; \Theta\right)\), to be the product of N normal distributions such that: 
+            </p>
+
+            <br>
+            <div class="row eqn ">
+              <div class="small-11 columns">
+                \begin{equation}f\left(x; \Theta\right) = \prod_{i=1}^{N} \aleph(x;\mu_{i},\sigma_{i})\end{equation}
+              </div>
+              <div class="num small-1 columns">
+                (6)
+              </div>
+            </div>
+            <br>
+
+            <p>
+
+              \(Z\left(\Theta \right)\) is not a constant anymore. This can be checked by using having two model parameters with the same \(\mu\) and different \(\sigma\). It is possible to compute the partition function here, while given \(\Theta\), the integration of (2) has far too much time-complexity associated with it especially for high-dimensional data spaces and high-dimensional parameter space scales it even further.
+              <br><br>
+
+              This is where Contrastive Divergence steps in. Since it is impossible to compute the energy function, contrastive divergence gives us a reliable way to estimate the gradient of said function.
+              <br><br>
+
+              Going back to the apt field metaphor by Oliver Woodford, “we now find ourselves in the field without any light whatsoever (i.e. we can’t calculate energy), so we cannot establish the height of any point in the field relative to our own. Contrastive divergence effectively gives us a sense of balance, allowing us to the feel the gradient of the field under our feet. By taking very small steps in the direction of steepest gradient we can then find our way to a local minimum.”
+              <br><br>
+
+              To derive the gradient, we first pen down the partial derivative of (4) as follows:
+
+            </p>
+            <br>
+            <div class="row eqn ">
+              <div class="small-11 columns">
+                \begin{equation}
+                \frac{\partial E( \textbf X; \Theta)}{\partial \Theta} = \frac{\partial \log Z(\Theta)}{\partial \Theta} - \frac{1}{K}\sum _{i=1}^{K} \frac{\partial \log f\left(x_{i}; \Theta\right)}{\partial \Theta}\end{equation}
+              </div>
+              <div class="num small-1 columns">
+                (7)
+              </div>
+            </div>
+            <div class="row eqn ">
+              <div class="small-11 columns">
+                \begin{equation}
+                = \frac{\partial \log Z(\Theta)}{\partial \Theta} - \langle \frac{\partial \log f\left(x_{i}; \Theta\right)}{\partial \Theta} \rangle_{\textbf X}
+                \end{equation}
+              </div>
+              <div class="num small-1 columns">
+                (8)
+              </div>
+            </div>
+            <br>
+
+            <p>
+
+              Where \(\langle y \rangle_{x}\) is the “expectation of y given the training data \(\textbf X\). The first term on the RHS of (8) comes from the partitioning function \(Z(\Theta)\), which as seen above and from (2), involves integrating over x. If we substitute this back, we get
+
+            </p>
+            <br>
+            <div class="row eqn ">
+              <div class="small-11 columns">
+                \begin{equation}
+                \frac{\partial \log Z(\Theta)}{\partial \Theta} = \frac{1}{Z(\Theta)} \frac{\partial Z(\Theta)}{\partial \Theta}
+                \end{equation}
+              </div>
+              <div class="num small-1 columns">
+                (9)
+              </div>
+            </div>
+            <div class="row eqn ">
+              <div class="small-11 columns">
+                \begin{equation}
+                = \frac{1}{Z(\Theta)} \frac{\partial}{\partial \Theta} \int f(x; \Theta) dx
+                \end{equation}
+              </div>
+              <div class="num small-1 columns">
+                (10)
+              </div>
+            </div>
+            <div class="row eqn ">
+              <div class="small-11 columns">
+                \begin{equation}
+                = \frac{1}{Z(\Theta)}  \int \frac{\partial f(x; \Theta)}{\partial \Theta} dx
+                \end{equation}
+              </div>
+              <div class="num small-1 columns">
+                (11)
+              </div>
+            </div>
+            <div class="row eqn ">
+              <div class="small-11 columns">
+                \begin{equation}
+                = \frac{1}{Z(\Theta)}  \int f(x; \Theta)\frac{\partial \log f(x; \Theta)}{\partial \Theta} dx 
+                \end{equation}
+              </div>
+              <div class="num small-1 columns">
+                (12)
+              </div>
+            </div>
+            <div class="row eqn ">
+              <div class="small-11 columns">
+                \begin{equation}
+                = \int p(x;\Theta)\frac{\partial \log f(x; \Theta)}{\partial \Theta} dx
+                \end{equation}
+              </div>
+              <div class="num small-1 columns">
+                (13)
+              </div>
+            </div>
+            <div class="row eqn ">
+              <div class="small-11 columns">
+                \begin{equation}
+                = \langle \frac{\partial \log f(x; \Theta)}{\partial \Theta} \rangle_{p(x;\Theta)}
+                \end{equation}
+              </div>
+              <div class="num small-1 columns">
+                (14)
+              </div>
+            </div>
+            <br>
+
+            <p>
+
+              As has been discussed before, this integration is intractable as it cannot be solved in terms of a closed form expression. However, if we take a closer look at (14), we can see that it can be approximated by drawing samples from the distribution \(p\left(x; \Theta\right)\). However, these samples cannot be taken directly from the probability distribution as we do not have a numerical value for the partitioning function \(Z(\Theta)\). Now, we utilise a method of using several cycles of “Markov Chain Monte Carlo” to approximate (14).
+              <br><br>
+              The Markov Chain Monte Carlo (MCMC) has been succinctly explained by an anonymous user on Stack Overflow. MCMC’s objective is to generate random draws from a target distribution and then identify a way to construct a Markov chain that is as optimal as possible such that the Markov Chain’s probability distribution at equilibrium is equal to our target’s probability distribution. We can do so by constructing a chain that starts at some arbitrary point and then iterating Markov Chain infinitely till we get our desired probability distribution.
+              <br><br>
+              We then approximate the quantities of interest (e.g. the mean) by taking the sample average of the draws after discarding a few initial draws which is the Monte Carlo component. For our RBM implementation, we utilised Gibbs sampling, a type of MCMC which we will break down later on.
+              <br><br>
+              Now, Xn represents the training data transformed using n iterations of MCMC sampling such that \(\textbf X_{0} \equiv \textbf{X}\). Now if we substitute this back into (8) we arrive at this:
+            </p>
+
+            <br>
+            <div class="row eqn ">
+              <div class="small-11 columns">
+                \begin{equation}
+                \frac{\partial E(x;\Theta)}{\partial \Theta} = \langle \frac{\partial \log f(x; \Theta)}{\partial \Theta} \rangle_{X^{\infty}} - \langle \frac{\partial \log f(x; \Theta)}{\partial \Theta} \rangle_{X^{0}}
+                \end{equation}
+              </div>
+              <div class="num small-1 columns">
+                (15)
+              </div>
+            </div>
+            <br>
+
+            <p>
+
+              If we observe this carefully, we see that we still have an extremely large computational task at head. The number of MCMC cycles required is astronomically large and this would take far too long. Hinton proposes that all the approximation can be done in a few cycles, even just one. As such, we arrive at the following, after minimizing our energy function; the parameter update equation:
+
+            </p>
+
+            <br>
+            <div class="row eqn ">
+              <div class="small-11 columns">
+                \begin{equation}
+                \frac{\partial E(x;\Theta)}{\partial \Theta} = \langle \frac{\partial \log f(x; \Theta)}{\partial \Theta} \rangle_{X^{\infty}} - \langle \frac{\partial \log f(x; \Theta)}{\partial \Theta} \rangle_{X^{0}}
+                \end{equation}
+              </div>
+              <div class="num small-1 columns">
+                (16)
+              </div>
+            </div>
+            <br>
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row contents" id="g">
+      <div class="gibbs row background bg-color4" style="margin-left: -50%; margin-right: -50%;">
+        <div class="animated fadeIn" style="max-width: 50%; margin-left: auto; margin-right: auto;">
+          <h2>Gibbs Sampling</h2>
+
+          <p>
+
+            Gibbs sampling is a “a general method for probabilistic inference”<sup> (17)</sup>. As explained previously, it is a Markov Chain Monte Carlo (MCMC) algorithm<sup>(18)</sup>. As described in the section above, this MCMC technique is a way of estimating the integral. In Gibbs sampling, each random variable is iteratively resampled from its conditional distribution given the remaining variables<sup>(19)</sup>.
+            
+            <br><br>We will now go into detail about how Gibbs sampling is performed. This section’s math and logic has largely been modified and taken from Deeplearning.net’s RBM article and “Gibbs Sampling For The Uninitiated” by Philip Resnik and Eric Hardisty <sup>(18,8)</sup>.
+            <br><br>With our probability function described earlier, \(p\), samples of this can be obtained by running the Markov chain till we reach the desired values. All this is done while using Gibbs sampling as the “transitional operator”.<br><br>
+            Gibbs sampling of the joint of \(N\) random variable \(S = (S_{1},…, S_{N})\) is done through iterative sampling “sub-steps” N times. This is of the form
+
+
+
+          </p>
+
+          <br>
+          <div class="row eqn ">
+            <div class="small-11 columns">
+              \begin{equation} 
+              S_{i} \sim p(S_{i}|S_{-i})
+              \end{equation}
+            </div>
+            <div class="num small-1 columns">
+              (17)
+            </div>
+          </div>
+          <br>
+
+          <p>
+
+            Where the term \(S_{-i}\) contains the other N-1 random variables in S excluding i.
+            In the case of a RBM, \(S\) is the set of visible and hidden nodes. However, since an RBM is a complete bipartite graph, the set of hidden and visible nodes have no intra connection. So, we perform “Gibbs block sampling”. In this transitional operator, given the hidden nodes, we sample all of the visible nodes simultaneously and vice versa for sampling the hidden node. Thus a single step in the MCMC process can be represented as follows
+
+          </p>
+
+
+          <br>
+          <div class="row eqn ">
+            <div class="small-11 columns">
+              \begin{equation}
+              h^{n+1} \sim sigm(W'v^{(n)} + c)
+              \end{equation}
+            </div>
+            <div class="num small-1 columns">
+              (18)
+            </div>
+          </div>
+          <div class="row eqn ">
+            <div class="small-11 columns">
+              \begin{equation}
+              u^{n+1} \sim sigm(W'h^{(n+1)} + b)
+              \end{equation}
+            </div>
+            <div class="num small-1 columns">
+              (19)
+            </div>
+          </div>
+          <br>
+
+          <p>
+
+            Where \(h^{(n)}\) refers to the set of all the hidden nodes at the \(n^{th}\) step of MCMC. Find below a diagram that explains this process:
+            <br>
+            <img src="img/gibbs.png">
+            <br>
+            Infinite iterations of this would guarantee that the samples are 100% accurate. However, this would be extremely time inefficient and we use Contrastive Divergence to speed this up. We initialise the Markov chain with a training example instead so that the chain will already be close to its final value.
+            Contrastive divergence is run once instead of k times as in practice, it has shown to work surprisingly well<sup>(4,16,8)</sup>.
+
+            <div class="citation">
+              Image adapted from <a href="http://recognize-speech.com/acoustic-model/knn/training-neural-networks" style="color: #c93042;">http://recognize-speech.com/acoustic-model/knn/training-neural-networks</a>, Accessed on 29th Feb 2016
+            </div>
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row" id="s">
+    <div class="sigmoid row background bg-color3" style="margin-left: -50%; margin-right: -50%;">
+      <div class="subText animated fadeIn" style="max-width: 50%; margin-right: auto; margin-left: auto;">
+        <h2>Sigmoid Function</h2>
+        <img src="img/sigmoid.png">
+        <p>
+
+          The sigmoid function is a relatively simple mathematical function that is implemented in the RBM. It is also referred to as the “sigmoidal curve or the logistic function”<sup>(20)</sup>. The formula is given by:
+
+        </p>
+
+        <br>
+        <div class="row eqn">
+          <div class="small-11 columns">
+            \begin{equation}
+            y = \frac{1}{1 + e^{-x}}
+            \end{equation}
+          </div>
+          <div class="num small-1 columns">
+            (20)
+          </div>
+        </div>
+        <br>
+        
+        <p>
+          Now we know know the workings of a RBM, let us look at how a Deep Belief Network works!
+          <div class="button1">
+            <a href="dbn.html"><button class><i class="fi-widget"></i> How Do Deep Belief Networks Work? </button></a>
+          </div>
+
+        </p>
+      <div class="citation">
+      Image adapted from <a style="color: #c93042;" href="https://www.werc.tu-darmstadt.de/fileadmin/user_upload/Group_UKP/2014-10-14_LKE_Tutorial_on_Deep_Learning.pdf">https://www.werc.tu-darmstadt.de/fileadmin/user_upload/Group_UKP/2014-10-14_LKE_Tutorial_on_Deep_Learning.pdf</a>, Accessed on 3rd March.
+      </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+</article>
+
+
+
+
+<script>
+  smoothScroll.init();
+  $(document).ready(function() {
+    $(document).foundation();
+  })
+</script>
+
+</body>
+</html>
+

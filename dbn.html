@@ -1,0 +1,548 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RBM | Topics</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/css/foundation.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css">
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+  <!-- font-family: 'PlayFair', serif !important; -->
+  <link href='https://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
+  <!-- font-family: 'Cinzel', serif !important; -->
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display+SC' rel='stylesheet' type='text/css'>
+  <!-- font-family: 'Playfair Display SC', serif; -->
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/dbn.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+  <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+  <script type="text/javascript" src="js/smoothscroll.js"></script>
+</head>
+
+<body style="height: 100%;">
+
+
+  <style>
+    .background {margin:0;padding:0;}
+    .bg-color1 {background: #FFCD99;}
+    .bg-color2 {background: #FFA56A;}
+    .bg-color3 {background: #E89D83;}
+    .bg-color4 {background: #E87E59;}
+    .bg-color5 {background: #FF7346;}
+    .bg-color6 {background: #E8720C;}
+    .bg-color7 {background: #FF2F2F;}
+
+
+    .content {width:80%;margin:0 auto; background:white;}
+    .footer {width:80%;margin:0 auto; background:white;}
+
+  </style>
+
+
+  <div class="bodyWrapper">
+    <div class="Navbar">
+
+      <nav class="top-bar" data-topbar>
+        <ul class="title-area row center-buttons">
+          <li class="name">
+            <h1><a href="#" class="titleBar">Neural Networks and Artifical Intelligence</a></h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+
+        <section class="top-bar-section row">
+          <ul class="small-12">
+            <li><a href="index.html"><i class="fi-home"></i>Home</a></li>
+            <li><a href="WhatIsIt.html"><i class="fi-magnifying-glass"></i>What is it?</a></li>
+            <li><a href="how.html"><i class="fi-widget"></i>How Does it Work?</a></li>
+            <li class="active"><a href="dbn.html"><i class="fi-rss"></i>Deep Belief Nets</a></li>
+            <li><a href="imp.html"><i class="fi-wrench"></i>What We Did</a></li>
+            <li><a href="app.html"><i class="fi-play"></i>Try it out!</a></li>
+            <li><a href="Biblio.html"><i class="fi-page"></i>Bibliography</a></li>
+            <li><a href="AboutUs.html"><i class="fi-torsos-all"></i>About Us</a></li>
+          </ul>
+
+
+        </section>
+      </nav>
+    </div>
+
+    <div class="bodyOfPage">
+
+      <div class="row">
+        <div class="ToC row background bg-color1" style="margin-left: -50%; margin-right: -50%;">
+          <div class="animated fadeIn">
+            <h2 >Table of Contents</h2>
+            <div style="max-width: 50%; margin-right: auto; margin-left: auto;">
+              <div class="subtext row">
+                <nav class="toc" role = "navigation" class="table-of-contents">
+                  <ol>
+                    <li><a class="smoothScroll" href="#g">Greedy Layer-Wise Training - What is it?</a></li>
+                    <li><a class="smoothScroll" href="#wg">Greedy Layer-Wise Training - Why Do We Need it?</a></li>
+                    <li><a class="smoothScroll" href="#ga">Greedy Layer-Wise Training - How Does it Work?</a></li>
+                    <li><a class="smoothScroll" href="#gc">Greedy Layer-Wise Training - Conclusions</a></li>
+                    <li><a class="smoothScroll" href="#l">Logistic Regression - What is it?</a></li>
+                    <li><a class="smoothScroll" href="#binary">Logistic Regression - Binary dependent variables</a></li>
+                    <li><a class="smoothScroll" href="#multinomial">Logistic Regression - Multinomial logistic regression</a></li>
+                    <li><a class="smoothScroll" href="#mnist">Logistic Regression - MNIST</a></li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="g">
+        <div class="first row background bg-color2" style="margin-left: -50%; margin-right: -50%;">
+          <div class="animated fadeIn">
+            <h2 >Greedy Layer Wise Learning</h2>
+            <div style="max-width: 50%; margin-right: auto; margin-left: auto;">
+              <div class="subtext row">
+                <h3>What is greedy layer-wise training?</h3>
+                <p>
+                  The greedy layer-wise training is a pre-training algorithm that aims to train each layer of a DBN in a sequential way, feeding lower layers’ results to the upper layers. This renders a better optimization of a network than traditional training algorithms, i.e. training method using stochastic gradient descent à la RBMs. <br><br>
+                  In terms of computational units, deep structures such as the DBN can be much more efficient<sup> (25)</sup> than their shallow counterparts since they require fewer units<sup> (23)</sup> for performing the same function.  Multi-layer deep structures can represent abstract concepts and varying functions by keeping many non-linear layers in a hierarchy<sup> (25)</sup>.  From a lower-level to a higher-level in this hierarchy, layers’ abstractness ascend in terms of the complexity of objects they are representing (in the illustration below, the top layer shows all elemental pixels whereas the images are kept in the bottom layer). The process of how we divide more complex objects into simpler objects is by modeling a set of joint distribution between each visible and hidden layer. 
+
+                </p>
+                <img src="img/greedy.png">
+                <div class="citation">
+                  Image Adapted from <a href="https://www.metacademy.org/roadmaps/rgrosse/deep_learning">https://www.metacademy.org/roadmaps/rgrosse/deep_learning</a>, Accessed on 3rd Msrch 2016.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="wg">
+        <div class="second row background bg-color3" style="margin-left: -50%; margin-right: -50%;">
+          <div class="animated fadeIn">
+            <h2 >Greedy Layer Wise Learning</h2>
+            <div style="max-width: 50%; margin-right: auto; margin-left: auto;">
+              <div class="subtext row">
+                <h3>Why Do We Need Greedy Layer-Wise Training?</h3>
+                <img class="small-6 columns" src="img/stack.png">
+                <p>
+                  However, training a deep structure can be difficult since there may exist high dependencies across layers’ parameters<sup> (22)</sup>, i.e. the relation between parts of pictures and pixels. To resolve this problem, it is suggested that we must do two things. The first step is adapting lower layers to feed good input to the upper layers’ final setting (the harder part). Next we need to adjust upper layers to make use of that end setting of upper layers<sup> (22)</sup>.
+                  <br>
+
+                </p>
+                <p>
+                  Greedy layer-wise training has been introduced just to tackle this issue. It can be used for training the DBN in a layer-wise sequence where each layer is composed of an RBM, and it is confirmed to bring a better generalization by initializing a local minimum (or local criterion) that helps to formulate a representation of high-level abstractions of the input to the network<sup> (25)</sup>.
+                  <br><br>
+                  Amongst the greedy layer-wise training subset (excluding semi-supervised training which adapts parts of the objectives of both supervised and unsupervised training), unsupervised layer-wise training generally performs better than the supervised layer-wise training. This is because the supervised method may be, so to speak, “too greedy” and discard some useful information in the hidden layers<sup> (25)</sup>. In this report, we choose to examine unsupervised greedy layer-wise training algorithm.
+
+
+                </p>
+              </div>
+              <div class="citation">
+                Image adapted from <a href="https://assets.toptal.io/uploads/blog/image/335/toptal-blog-image-1395721542588.png">https://assets.toptal.io/uploads/blog/image/335/toptal-blog-image-1395721542588.png</a>, Accessed on 1st March 2016
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="ga">
+        <div class="third row background bg-color4" style="margin-left: -50%; margin-right: -50%;">
+          <div class="animated fadeIn">
+            <h2 >Greedy Layer Wise Learning</h2>
+            <div style="max-width: 50%; margin-right: auto; margin-left: auto;">
+              <div class="subtext row">
+                <h3>How does it work?</h3>
+                <p>
+                  A DBN is a stack of RBMs is trained in a greedy and sequential manner to capture the representation of hierarchy of relationships within the training data. A model of distribution between observed vector \(x\) and \(l\) hidden layer \(h_{k}\) is as follows)<sup>(21)</sup>:
+                </p>
+                
+                <br>
+                <div class="row eqn ">
+                  <div class="small-11 columns">
+                    \begin{equation}
+                    P(x,h^{1},...,h^{l}) = (\prod _{k=0}^{l - 2} P(h^{k}|h^{k+1}))P(h^{l - 1},h^{l})   
+                    \end{equation}      
+                  </div>
+                  <div class="num small-1 columns">
+                    (1)
+                  </div>
+                </div>
+                <br>
+
+                <p>
+                  where the distribution for visible units conditioned on hidden units of a RBM block at level k is represented by\(P(h^{k-1}|h^{k})\), and the visible-hidden joint distribution of top-level RBMs is represented by \(P(h^{l -1},h^{l} )\)<sup>(21)</sup>.
+                </p>
+                <br> 
+                <img src="img/dbn.png">      
+                <br> 
+                
+                <p>
+                  In an unsupervised training, a layer learns a more abstract representation of the layers below it and no label is require in the process since the training criterion does not depend on labels<sup> (25)</sup>. The algorithm of greedy layer-wise unsupervised training for a DBN can be generalized as following<sup> (21)</sup>:
+
+                  <ol>
+                    <li>Let raw input x be the first RBM layer that we want to train, \(x = h(0)\).</li>
+                    <li>Use the resulting representation from the first layer as an input data to the second layer. This representation can either mean activation data \(p(h^{(1)} =1|h^{(0)})\) <sup> (23)</sup> or a set of samples of\(p(h^{(1)}|h^{(0)})\) <sup> (24)</sup>.</li>
+                    <li>Then we train the second layer as a RBM and we keep the mean activations or sample from first layer as training data of the visible layer in this RBM.</li>
+                    <li>We repeat step 2 and step 3 for desired number of layers and for each iteration we feed upwards either the mean activations or the samples.</li>
+                    <li>Finally, we adapt fine-tuning on all parameters of the unsupervised network to transform it into classifiers by adding an extra logistic regression classifier and training by gradient descent on a supervised training criterion<sup> (24)</sup>.</li>
+                  </ol>
+
+                </p>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row" id="gc">
+        <div class="fourth row background bg-color5" style="margin-left: -50%; margin-right: -50%;">
+          <div class="animated fadeIn">
+            <h2 >Greedy Layer Wise Learning</h2>
+            <div style="max-width: 50%; margin-right: auto; margin-left: auto;">
+              <div class="subtext row">
+                <h3>Conclusions</h3>
+                <p>
+                  The advantage of unsupervised training procedure is that it allows us to use all of our data in the process of training (shared lower-level representation) and it does not require training criterion to be labeled (unsupervised). This unsupervised training process provides an optimal start for supervised training as well as to restrict the range of parameters for further supervised training<sup> (22)</sup>. 
+                </p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="l">
+        <div class="fifth row background bg-color4" style="margin-left: -50%; margin-right: -50%;">
+          <div class="animated fadeIn">
+            <h2 >Logistic Regression</h2>
+            <div style="max-width: 50%; margin-right: auto; margin-left: auto;">
+              <div class="subtext row">
+                <h3>What is it?</h3>
+                <p class="caption small-6 columns">
+                  "Logistic regression is a statistical method used to analyse a dataset."
+                </p>
+                <p>
+                  All the variables in the dataset are independent except for one. This dependent variable is categorical and discrete<sup>(26)</sup>. There are two cases of logistic regression, binary dependent variables and multinomial logistic regression. The former, as its name suggests, can only have two dependent variables. The later can have more than two. However, they both use logistic functions to estimate the probabilities of the dependent variables. We will now break the two types of logistic regression down.
+                </p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="binary">
+        <div class="sixth row background bg-color3" style="margin-left: -50%; margin-right: -50%;">
+          <div class="animated fadeIn">
+            <h2 >Logistic Regression</h2>
+            <div style="max-width: 50%; margin-right: auto; margin-left: auto;">
+              <div class="subtext row">
+                <h3>Binary dependent variables<sup>(27)</sup></h3>
+                <p>
+                  Logistic regression with binary dependent variables is relatively simple and commonly used. The two values are polar opposites, an example being “pass” and “fail”. Since the dependent variable is binary in nature, the conditional distribution is a Bernoulli distribution, which is a special instance of a binomial distribution. 
+                  <br>
+                  In the Bernoulli distribution, the random variable, \(k \in {0,1}\) , has the success probability of /(p/) and the failure probability of /(q = 1-p/). Due to the fact that both /(p/) and /(q/) are within /((0,1)/), the predicted value of the regression must be restricted to /((0,1)/). To do this, the logistic distribution function is used. A logistic function is an S-shaped function which is defined as:
+
+                </p>
+
+                <br>
+                <div class="row eqn ">
+                  <div class="small-11 columns">
+                    \begin{equation}
+                    \sigma(t)=\frac{e^{t}}{e^{t}+1} = \frac{1}{1 + e^{-t}}
+                    \end{equation}
+                  </div>
+                  <div class="num small-1 columns">
+                    (2)
+                  </div>
+                </div>
+                <br>
+
+                <p>
+                  Where t is a linear function and can be expressed as:
+                </p>
+
+                <br>
+                <div class="row eqn ">
+                  <div class="small-11 columns">
+                    \begin{equation}
+                    t = \beta_{0} + \beta_{1}x
+                    \end{equation}
+                  </div>
+                  <div class="num small-1 columns">
+                    (3)
+                  </div>
+                </div>
+                <br>
+
+                <p>
+                  Thus, we can say the logistic function is:
+                </p>
+
+                <br>
+                <div class="row eqn ">
+                  <div class="small-11 columns">
+                    \begin{equation}
+                    F(x) = \frac{1}{1 + e^{-(t)}}
+                    \end{equation}
+                  </div>
+                  <div class="num small-1 columns">
+                    (4)
+                  </div>
+                </div>
+                <br>
+
+                <p>
+                  By establishing this, we can now compress the data set to \((0,1)\), so \(F(x)\) can be explained as probability. Therefore, we know the probability of the success occurs given a predictor x.
+                </p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="multinomial">
+        <div class="seventh row background bg-color2" style="margin-left: -50%; margin-right: -50%;">
+          <div class="animated fadeIn">
+            <h2 >Logistic Regression</h2>
+            <div style="max-width: 50%; margin-right: auto; margin-left: auto;">
+              <div class="subtext row">
+                <h3>Multinomial logistic regression<sup>(28)</sup></h3>
+                
+                <p>
+                  Sometimes the dependent variable has more than two values. Take for example, a simple problem defined as: “which smartphone does a person have, given some of the person’s characteristics”. The value is clearly note binary and is discrete. In this case, the logistic function will not work since it can only shift between 0 and 1. Thus we need a new technique. Fortunately, the dataset is independent so that each explanatory variable will not affect the others. Therefore, it becomes possible to construct a score which is defined as following:
+                </p>
+
+                <br>
+                <div class="row eqn ">
+                  <div class="small-11 columns">
+                    \begin{equation}
+                    score(\textbf X_{i}, k) = \beta_{k}\cdot \textbf X_{i}
+                    \end{equation}
+                  </div>
+                  <div class="num small-1 columns">
+                    (5)
+                  </div>
+                </div>
+                <br>
+
+                <p>
+                  \( score(\textbf X_{i}, k) \) indicates the score that the outcome k has, under the situation \(\textbf X_{i}\). \(\beta_{k}\) is the weight vector corresponding to k and is linear combined with \(\textbf X_{i}\). More specifically, both \(\beta\) and \(\textbf X\) is a vector that group the regression coefficients or explanatory variables. Thus the score function can be broken into the following:
+                </p>
+
+                <br>
+                <div class="row eqn ">
+                  <div class="small-11 columns">
+                    \begin{equation}
+                    \beta_{k} \cdot \textbf X_{i} = \beta_{0,k} + \beta_{1,k} \cdot \textbf X_{1} + \beta_{2,k} \cdot \textbf X_{2} + ... + \beta_{m,k} \cdot \textbf X_{m}
+                    \end{equation}
+
+                  </div>
+                  <div class="num small-1 columns">
+                    (6)
+                  </div>
+                </div>
+
+                <p>
+
+                  With this equation, we are able to break the multinomial logistic regression down into several independent binary regression.
+                  We can set an arbitrary outcome as a pivot and have \(k-1\) binary regression with other outcomes against the pivot. If we choose \(K\) as the pivot, we will have:
+
+                </p>
+
+                <br>
+                <div class="row eqn ">
+                  <div class="">
+                    \begin{equation}
+                    \ln \frac{Pr(Y_{i} = 1)}{Pr(Y_{i} = K} = \beta_{1} \cdot \textbf X_{i}
+                    \end{equation}
+                  </div>
+                </div>
+                <div class="row eqn ">
+                  <div class="">
+                    \begin{equation}
+                    \ln \frac{Pr(Y_{i} = 2)}{Pr(Y_{i} = K} = \beta_{2} \cdot \textbf X_{i}
+                    \end{equation}
+                  </div>
+                </div>
+                <div class="row eqn ">
+                  <div class="">
+                    \begin{equation}
+                    ...
+                    \end{equation}
+                  </div>
+                </div>
+                <div class="row eqn ">
+                  <div class="small-11 columns">
+                    \begin{equation}
+                    \ln \frac{Pr(Y_{i} = K-1)}{Pr(Y_{i} = K)} = \beta_{K-1} \cdot \textbf X_{i}
+                    \end{equation}
+                  </div>
+                  <div class="num small-1 columns">
+                    (7)
+                  </div>
+                </div>
+                <br>
+
+                <p>
+                  By getting rid of the natural log, we have:
+                </p>
+
+                <br>
+                <div class="row eqn ">
+                  <div class="">
+                    \begin{equation}
+                    Pr(Y_{i} = 1) = Pr(Y_{i} = K) e^{\beta_{1} \cdot \textbf X_{i}}
+                    \end{equation}
+                  </div>
+                </div>
+                <div class="row eqn ">
+                  <div class="">
+                    \begin{equation}
+                    Pr(Y_{i} = 2) = Pr(Y_{i} = K) e^{\beta_{2} \cdot \textbf X_{i}}
+                    \end{equation}
+                  </div>
+                </div>
+                <div class="row eqn ">
+                  <div class="">
+                    \begin{equation}
+                    ...
+                    \end{equation}
+                  </div>
+                </div>
+                <div class="row eqn ">
+                  <div class="small-11 columns">
+                    \begin{equation}
+                    Pr(Y_{i} = K-1) = Pr(Y_{i} = K) e^{\beta_{K-1} \cdot \textbf X_{i}}
+                    \end{equation}
+                  </div>
+                  <div class="num small-1 columns">
+                    (8)
+                  </div>
+                </div>
+                <br>
+
+                <p>
+                  If we add \(Pr(Y_{i} = K) = Pr(Y_{i} = K)\) to the end, the LHS will sum up to 1. Thus we have: 
+                </p>
+
+                <br>
+                <div class="row eqn ">
+                  <div class="small-11 columns">
+                    \begin{equation}
+                    Pr(Y_{i} = K) = \frac{1}{1 + \sum_{k=1}^{K-1} e^{\beta_{k}\cdot \textbf X_{i}}}
+                    \end{equation}
+                  </div>
+                  <div class="num small-1 columns">
+                    (9)
+                  </div>
+                </div>
+                <br>
+
+                <p>
+                  By doing this, we figure out the probability of outcome K will occur.<br>
+                  With some transformation, we establish 
+
+                </p>
+
+                <br>
+                <div class="row eqn ">
+                  <div class="small-11 columns">
+                    \begin{equation}
+                    Pr(Y_{i} = c) = \frac{e^{\beta_{c}\cdot\textbf X_{i}}}{\sum_{k=1}^{K} e^{\beta_{k}\cdot \textbf X_{i}}}
+                    \end{equation}
+                  </div>
+                  <div class="num small-1 columns">
+                    (10)
+                  </div>
+                </div>
+                <br>
+
+                <p>
+                  We can now define a softmax function. A softmax function is a “generalization of logistic regression to the case where we want to handle multiple classes<sup>(29)</sup>.”
+                </p>
+
+                <br>
+                <div class="row eqn ">
+                  <div class="small-11 columns">
+                    \begin{equation}
+                    softmax(k,x_{1},...,x_{n}) = \frac{e^{x_{k}}}{\sum_{i=1}^{n}e^{x_{i}}}
+                    \end{equation}
+                  </div>
+                  <div class="num small-1 columns">
+                    (11)
+                  </div>
+                </div>
+                <br>
+
+                <p>
+                  The softmax function behaves similarly to the logistical function in binary logistic regression. When \(X_{k}\) is smaller than the max value it will return a value very close to 0, and when it is the max value it will return a number close to 1.
+                </p>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" id="mnist">
+        <div class="seventh row background bg-color1" style="margin-left: -50%; margin-right: -50%;">
+          <div class="animated fadeIn">
+            <h2 >Logistic Regression</h2>
+            <div style="max-width: 50%; margin-right: auto; margin-left: auto;">
+              <div class="subtext row">
+                <h3>MNIST digits classification</h3>
+
+                <p>
+                  When classifying MNIST digits, it is clear that the dependent variable has 10 values \({0..9}\). Therefore, multinomial logistic regression is used. Assume the weight matrix is \(W\) and the bias value, which is used to reduce the error, is \(b\), we have the function:
+                </p>
+                
+                <div class="row eqn">
+                  <div class="">
+                    \begin{equation}
+                    P(Y = i|x,W,b) = softmax_{i}(Wx+b)
+                    \end{equation}
+                  </div>
+                </div>
+                <div class="row eqn ">
+                  <div class="small-11 columns">
+                    \begin{equation}
+                    = \frac{e^{W_{i}x + b_{i}}}{\sum_{j} e^{W_{j}x + b_{j}}}
+                    \end{equation}
+                  </div>
+                  <div class="num small-1 columns">
+                    (12)
+                  </div>
+                </div>
+
+                <p>
+                  This describes the probability of the input vector x is a member of a class i. In this particular case, the x will be a 28*28 image and i will be a digit between 0 and 9.
+                </p>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $(document).foundation();
+    })
+  </script>
+
+</body>
+</html>
